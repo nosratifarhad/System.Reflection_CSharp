@@ -9,6 +9,8 @@ internal class Program
         Console.WriteLine("-------------------------");
         var type = typeof(Person);
 
+        //Meta Data Viewer
+
         Console.WriteLine("Namespace: {0}", type.Namespace);
         Console.WriteLine("Assembly Name: {0}", type.Assembly.FullName);
         Console.WriteLine("Data Type Name: {0}", type.Name);
@@ -67,6 +69,35 @@ internal class Program
                 Console.WriteLine("{0} {{ set; }}", propertyInfo.Name);
             }
         }
+        Console.WriteLine("-------------------------");
+
+        //Late Binding
+
+        object person = Activator.CreateInstance(type);
+        //Person person1 = AdvanceActivator.CreateInstance(10, "farhad", "nosrati");
+
+        //------------------------
+        //var personInstance = Activator.CreateInstance(type);
+        //PropertyInfo firstNameProperty = type.GetProperty("FirstName");
+        //firstNameProperty.SetValue(personInstance, "Hossein");
+        //Console.WriteLine(firstNameProperty.GetValue(personInstance));
+        //------------------------
+        Console.WriteLine("-------------------------");
+        //Attibute 
+
         Console.ReadLine();
+    }
+
+    [Obsolete]
+    public static void SetDateAndTime(int year, int month, int day, int hour, int minute, int second)
+    {
+    }
+}
+
+public class AdvanceActivator
+{
+    public static T CreateInstance(params object[] parameters)
+    {
+        return (T)System.Activator.CreateInstance(typeof(T), parameters);
     }
 }
