@@ -87,7 +87,7 @@ internal class Program
 
         Console.ReadLine();
     }
-
+    //Attibute 
     [Obsolete]
     public static void SetDateAndTime(int year, int month, int day, int hour, int minute, int second)
     {
